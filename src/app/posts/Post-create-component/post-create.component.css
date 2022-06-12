@@ -1,0 +1,15 @@
+
+mat-form-field,
+    textarea{
+        width: 100%;
+}
+
+button{
+    margin-top: 0.7rem;
+}
+#title-field{
+    margin-top: 1rem;
+}
+#content-field{
+    margin-top: 1rem;
+}

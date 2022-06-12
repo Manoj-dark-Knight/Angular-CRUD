@@ -1,0 +1,35 @@
+
+<mat-accordion multi="true" *ngIf="posts.length > 0">
+  <h4>
+    <input type="text" class="filterBar" [(ngModel)]="SearchValue" placeholder="Search Name to filter..">
+  </h4>
+    <mat-expansion-panel *ngFor="let post of posts | nameFilter: SearchValue">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+              <h2>{{post.name}}</h2> 
+            </mat-panel-title>
+            <mat-panel-description>
+                <p>{{post.time | date: " h:mm a"}}</p>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <label for="MobNum" class="labels">Contact no: </label>
+        <h4 id="MobNum">{{post.MobNumber}}</h4>
+        <label for="mail" class="labels">Mail: </label>
+        <h4 id="mail">{{post.Email}}</h4>
+        <label for="dob" class="labels">Date of Birth: </label>
+        <h4 id="dob">{{post.DOB | date: "MMM d, y"}}</h4>
+        <label for="about" class="labels">About: </label>
+        <h4 id="about">{{post.Bio}}</h4>
+        <label for="date-created" class="labels">post created on: </label>
+        <h4 id="date-created">{{post.time | date: 'EEEE, MMMM d, y'}}</h4>
+        <mat-action-row>
+            <a mat-button color="primary" [routerLink]="['/edit', post.id]">EDIT</a>
+            <button mat-button color="warn" (click)="Delete(post.id)">DELETE</button>
+          </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion>
+<div class="no-post-txt" *ngIf="posts.length <= 0">
+    <h3 class="mat-title">No posts present!</h3>
+</div>
+
+
